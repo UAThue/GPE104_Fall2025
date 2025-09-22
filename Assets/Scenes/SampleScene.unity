@@ -394,8 +394,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1753343514}
   - component: {fileID: 1753343513}
-  - component: {fileID: 1753343515}
   - component: {fileID: 1753343516}
+  - component: {fileID: 1753343517}
   m_Layer: 0
   m_Name: PlayerPawn
   m_TagString: Untagged
@@ -473,19 +473,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1753343515
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1753343511}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f913af88411d52a4daed14bfa238968c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spriteColor: {r: 0.9779149, g: 0.427451, b: 1, a: 1}
 --- !u!114 &1753343516
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -498,8 +485,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e62a93e7d751814bbcdde38367ba0f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: {fileID: 0}
   moveSpeed: 10
   rotateSpeed: 360
+--- !u!114 &1753343517
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1753343511}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b1e7715a0623464ab26ec0511b05631, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 10
 --- !u!1 &1995721847
 GameObject:
   m_ObjectHideFlags: 0

@@ -6,9 +6,13 @@ public class PawnSpaceship : Pawn
     public float rotateSpeed; // The speed the pawn rotates
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    protected override void Start()
     {
-        
+        // This runs instead of the parent, because it overrides the parent
+        // But we want the parent to run, too --- so, tell the parent to run
+        base.Start();
+
+        // TODO: Do anything a PawnSpaceship does on start
     }
 
     // Update is called once per frame
