@@ -29,6 +29,16 @@ public class Health : MonoBehaviour
         }
     }
 
+    public void TakeDamage (float damage, Controller damageDealer)
+    {
+        // TODO: Give points to the damage dealer for dealing damage
+        // For now, debug who did the damage
+        Debug.Log(damageDealer.gameObject.name + " did " + damage + " damage to " + this.gameObject.name);
+
+        // Actually take the damage
+        TakeDamage (damage);
+    }
+
     public void Heal(float healAmount)
     {
         currentHealth = currentHealth + healAmount;
