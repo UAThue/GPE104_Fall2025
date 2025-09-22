@@ -40,9 +40,17 @@ public class Health : MonoBehaviour
 
     public void Die()
     {
-        //TODO: Get the death component
-        //TODO: Tell the death component to Die
-        Debug.Log("Ugh. You got me!");
+        //Get the death component
+        Death deathComponent = GetComponent<Death>();
+
+        //Tell the death component to Die        
+        if (deathComponent != null)
+        {
+            deathComponent.Die();
+        } else
+        {
+            Debug.LogWarning("Warning: " + gameObject.name + "has no death component.");
+        }
     }
 
 

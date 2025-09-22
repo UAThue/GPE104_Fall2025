@@ -1,7 +1,9 @@
 using UnityEngine;
 
-public class DeathDestroy : Death
+public class TESTSDELETEME : MonoBehaviour
 {
+    public Pawn pawnToTest;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -11,12 +13,9 @@ public class DeathDestroy : Death
     // Update is called once per frame
     void Update()
     {
-        
-    }
-
-    public override void Die()
-    {
-        // Destroy the game object that this component is on
-        Destroy(this.gameObject);
+        if (Input.GetKeyDown(KeyCode.U)) 
+        {
+            pawnToTest.health.TakeDamage(1);
+        }
     }
 }

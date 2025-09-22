@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class DeathRecenter : MonoBehaviour
+public class DeathRecenter : Death
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -12,5 +12,11 @@ public class DeathRecenter : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public override void Die()
+    {
+        // Move the object back to the center of the universe
+        transform.position = Vector3.zero;
     }
 }
