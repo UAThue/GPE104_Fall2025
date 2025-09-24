@@ -3,6 +3,7 @@ using UnityEngine;
 public abstract class Pawn : MonoBehaviour
 {
     public Health health;
+    public Shooter shooter;
     public abstract void Move(Vector3 moveVector);
     public abstract void Rotate(float angle);
     protected virtual void Start ()
@@ -14,6 +15,11 @@ public abstract class Pawn : MonoBehaviour
         {
             Debug.LogWarning(gameObject.name + " does not have a health component");
         }
+
+        // Load the shooter component
+        shooter = GetComponent<Shooter>();
+
+        //TODO: Verify that we got the shooter component
     }
 }
 

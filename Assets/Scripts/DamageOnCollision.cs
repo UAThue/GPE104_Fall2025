@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class DamageOnCollision : MonoBehaviour
 {
+    public bool selfDestructOnCollision = false;
+    public float damageDone = 1.0f;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -16,14 +18,22 @@ public class DamageOnCollision : MonoBehaviour
 
     public void OnCollisionEnter2D(Collision2D collisionData)
     { 
-        // Get the pawn on the other object
-        Pawn otherPawn = collisionData.gameObject.GetComponent<Pawn>();
+        // Debug.Log(gameObject.name + " collided with " + collisionData.gameObject.name);
+
+        // Get the health component on the other object
+        Health otherObjectHealth = collisionData.gameObject.GetComponent<Health>();
 
         // if that pawn exists!
-        if (otherPawn != null)
+        if (otherObjectHealth != null)
         {
             // Tell it to take damage
-            otherPawn.health.TakeDamage(1);
+            otherObjectHealth.TakeDamage(damageDone);
+        }
+
+        // See if we should self destruct?
+        if (selfDestructOnCollision)
+        {
+            Destroy(gameObject);
         }
     }
 
