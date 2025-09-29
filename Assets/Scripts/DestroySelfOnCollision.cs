@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class DestroySelfOnCollision : MonoBehaviour
 {
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider collision)
     {
         Destroy(gameObject);
     }

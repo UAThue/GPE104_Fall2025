@@ -12,10 +12,10 @@ GameObject:
   - component: {fileID: 7643960241123036445}
   - component: {fileID: 652117916292661159}
   - component: {fileID: 8969114975318600187}
-  - component: {fileID: 6534059060583436141}
   - component: {fileID: 444350980030715987}
   - component: {fileID: 534001071831303234}
   - component: {fileID: -5632194522758655186}
+  - component: {fileID: -9156482287507110595}
   m_Layer: 6
   m_Name: PlayerPawn
   m_TagString: Untagged
@@ -124,18 +124,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 1
---- !u!114 &6534059060583436141
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1978255580065555315}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4bbcd00f9e1906b418910a0f780caa63, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!60 &444350980030715987
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -166,7 +154,7 @@ PolygonCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -240,6 +228,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletToShoot: {fileID: 1728411256938976853, guid: efbb364027eb63f40bbfa08bbf5f19da, type: 3}
   firePoint: {fileID: 810647528577979472}
+--- !u!114 &-9156482287507110595
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1978255580065555315}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07a3fa08219f8ca4abdda508c6fd8e64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lives: 0
 --- !u!1 &7154518548328901369
 GameObject:
   m_ObjectHideFlags: 0

@@ -16,12 +16,10 @@ public class DamageOnCollision : MonoBehaviour
         
     }
 
-    public void OnCollisionEnter2D(Collision2D collisionData)
+    public void OnTriggerEnter2D(Collider2D other)
     { 
-        // Debug.Log(gameObject.name + " collided with " + collisionData.gameObject.name);
-
         // Get the health component on the other object
-        Health otherObjectHealth = collisionData.gameObject.GetComponent<Health>();
+        Health otherObjectHealth = other.gameObject.GetComponent<Health>();
 
         // if that pawn exists!
         if (otherObjectHealth != null)
@@ -34,6 +32,7 @@ public class DamageOnCollision : MonoBehaviour
         if (selfDestructOnCollision)
         {
             Destroy(gameObject);
+            Debug.Log("Hit "+other.gameObject.name+". Self destruct.");
         }
     }
 

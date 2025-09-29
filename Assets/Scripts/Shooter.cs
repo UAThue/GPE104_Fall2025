@@ -12,7 +12,5 @@ public class Shooter : MonoBehaviour
     {
         // Instantiate the bullet we plan to shoot
         Bullet theBullet = Instantiate<Bullet>(bulletToShoot, firePoint.position, firePoint.rotation );
-
-        // TODO: In the future, we might to set the bullets damage and speed based on player data
     }
 }

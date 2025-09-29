@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class PawnSpaceship : Pawn
 {
-
     public float moveSpeed; // The speed the pawn moves
     public float rotateSpeed; // The speed the pawn rotates
     public Shooter shooterComponent; // The component that handles shooting
