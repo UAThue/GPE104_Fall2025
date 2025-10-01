@@ -2,22 +2,29 @@ using UnityEngine;
 
 public class DeathGameOver : Death
 {
-    public int lives;
-    public override void Die()
+    private Pawn pawnComponent;
+
+    void Start()
     {
-        if (lives > 0)
+        // Get our pawn component -- this way, we use the pawns controller as our controller
+        pawnComponent = GetComponent<Pawn>();
+    }
+    public override void Die()
+    {       
+        if (pawnComponent.controller.lives > 0)
         {
             // Subtract a life
-            lives = lives - 1;
+            pawnComponent.controller.lives = pawnComponent.controller.lives - 1;
 
             // Destroy the player and respawn them
-            GameManager.instance.SpawnPlayer();
             Destroy(gameObject);
+
+            GameManager.instance.SpawnPlayer();
         }
         else
         {
             // Game over, man!
-            GameManager.instance.ShowGameOverScreen();
+            GameManager.instance.GameOver();
             Destroy(gameObject);
         }
 

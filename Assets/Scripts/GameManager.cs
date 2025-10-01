@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     [Header("Players")]
     // List of players
     public List<ControllerPlayer> players;
+    public List<Meteor> meteors;
 
     [Header("Prefabs")]
     // Prefabs
@@ -18,15 +19,20 @@ public class GameManager : MonoBehaviour
 
     [Header("Game Data")]
     // Any other variables that our game needs
-    public float score;
     public float topScore;
     public int startLives;
+    public int targetNumberOfMeteors = 3;
     public List<Transform> meteorSpawnPoints;
 
     [Header("Game States")]
     public GameObject mainMenuObject;
     public GameObject gameplayObject;
     public GameObject gameOverObject;
+
+    [Header("Sounds")]
+    public AudioClip laserSound;
+    public AudioClip explosionSound;
+    public AudioClip collisionSound;
 
     public void Awake()
     {
@@ -54,6 +60,12 @@ public class GameManager : MonoBehaviour
                                            GetRandomSpawnPoint(), 
                                            Quaternion.identity) as GameObject;
         
+        // Get the meteor component
+        Meteor meteorComponent = newMeteor.GetComponent<Meteor>();
+
+        // Add it to our list!
+        meteors.Add(meteorComponent);
+
         // Point at the player
         if (players[0].pawn != null)
         {
@@ -102,17 +114,18 @@ public class GameManager : MonoBehaviour
         if (players[0].pawn != null) 
         {
             Destroy(players[0].pawn.gameObject);
+            players[0].Unpossess();
         }
 
         // Instantiate a player pawn
         GameObject newPawnObject = Instantiate(playerPawnPrefab, Vector3.zero, Quaternion.identity) as GameObject;
         if (newPawnObject != null)
         {
+            // Get the pawn component
             Pawn newPawn = newPawnObject.GetComponent<Pawn>();
-            if (newPawn != null)
-            {
-                players[0].pawn = newPawn;
-            }
+
+            // Possess the new pawn
+            players[0].Possess(newPawn); 
         }
 
     }
@@ -155,21 +168,38 @@ public class GameManager : MonoBehaviour
         //  Make the players list
         players = new List<ControllerPlayer>();
 
+        // Make our meteors list
+        meteors = new List<Meteor>();
+
         // Spawn the Player Controller
         SpawnPlayerController();
 
         // Spawn the Player Pawn
         SpawnPlayer();
 
-        // Set players lives to starting lives
-        DeathGameOver playerDeathComponent = players[0].pawn.GetComponent<DeathGameOver>();
-        if (playerDeathComponent != null)
-        {
-            playerDeathComponent.lives = startLives;
-        }
+        // Set player zero's lives to starting lives
+        players[0].lives = startLives;
 
         // Spawn a meteor
-        SpawnMeteor();
+        for (int currentNumMeteors = 0; currentNumMeteors < targetNumberOfMeteors; currentNumMeteors++)
+        {
+            SpawnMeteor();
+        }
+    }
+
+    public void GameOver()
+    {
+        // Destroy all our meteors
+        for (int i=0; i<meteors.Count; i++)
+        {
+            if (meteors[i] != null)
+            {
+                Destroy(meteors[i].gameObject);
+            }
+        }
+
+        // Show Game Over Screen
+        ShowGameOverScreen();
     }
 
 }

@@ -4,6 +4,7 @@ public abstract class Pawn : MonoBehaviour
 {
     public Health health;
     public Shooter shooter;
+    public Controller controller;
     public abstract void Move(Vector3 moveVector);
     public abstract void Rotate(float angle);
     protected virtual void Start ()
@@ -21,5 +22,7 @@ public abstract class Pawn : MonoBehaviour
 
         //TODO: Verify that we got the shooter component
     }
+
+
 }
 

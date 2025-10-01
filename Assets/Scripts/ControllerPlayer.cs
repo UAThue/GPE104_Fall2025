@@ -2,7 +2,8 @@ using UnityEngine;
 
 public class ControllerPlayer : Controller
 {
-    public Pawn pawn; // The pawn we control
+    public float score;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
